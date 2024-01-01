@@ -1,6 +1,6 @@
 'use client';
 
-import { ReactNode } from 'react';
+import { ReactNode, useState } from 'react';
 import Image from "next/image";
 import {
     FaHome,
@@ -9,7 +9,8 @@ import {
     FaEllipsisH,
 } from "react-icons/fa";
 import { VscGithubAlt } from "react-icons/vsc";
-import styles from './sidebar.module.css'; // Import your CSS module
+import styles from '@/components/sidebar.module.css'; // Import your CSS module
+import SidebarToggle from './sidebar-toggle';
 
 
 interface NavItemProps {
@@ -19,6 +20,12 @@ interface NavItemProps {
 }
 
 const Sidebar = () => {
+    const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+    const toggleSidebar = () => {
+        setIsSidebarOpen(!isSidebarOpen); // Toggle sidebar state
+    };
+
+
 
     const session = {
         user: {
@@ -41,7 +48,9 @@ const Sidebar = () => {
     }
 
     return (
-        <div style={{ width: "20%" }} className="flex-none bg-gray-800 text-white p-4 overflow-y-auto">
+        <>
+        <SidebarToggle isSidebarOpen = {isSidebarOpen} toggleSidebar = {toggleSidebar} />
+            <div className={`${styles.sidebar}  ${isSidebarOpen ? styles.show : ""} flex-none bg-gray-800 text-white p-4 overflow-y-auto`}>
             <div className="flex flex-col items-center">
                 <VscGithubAlt className="text-gray-200 text-4xl mb-4" />
 
@@ -103,6 +112,7 @@ const Sidebar = () => {
 
             </div>
         </div>
+        </>
 
     )
 }

@@ -1,0 +1,32 @@
+{
+  "protocol": "https://iglumtech.com/schema/foodcheckProfileProtocol",
+  "published": true,
+  "types": {
+    "person": {
+      "schema": "https://iglumtech.com/schema/foodcheckProfileProtocol/med-data",
+      "dataFormats": [
+        "application/json"
+      ]
+    }
+  },
+  "structure": {
+    "person": {
+      "$actions": [
+        {
+          "who": "anyone",
+          "can": "write"
+        },
+        {
+          "who": "author",
+          "of": "person",
+          "can": "read"
+        },
+        {
+          "who": "recipient",
+          "of": "person",
+          "can": "read"
+        }
+      ]
+    }
+  }
+}
