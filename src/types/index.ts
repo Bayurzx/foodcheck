@@ -2,7 +2,7 @@ import { Web5, Record } from "@web5/api";
 import { ReactNode } from 'react'
 
 export type PersonData = {
-    name: string;
+    name?: string;
     gender?: string;
     jobTitle?: string;
     birthDate?: string;
@@ -68,8 +68,8 @@ export type Web5ContextType = {
     addUserData: () => void;
     deleteUserData: () => void;
     updateUserData: () => void;
-    setPersonData: React.Dispatch<React.SetStateAction<PersonData>>
-    personData: PersonData;
+    setPersonData: React.Dispatch<React.SetStateAction<PersonData | undefined>>
+    personData: PersonData | undefined;
 };
 
 export type Web5ProviderProps = {
