@@ -68,8 +68,8 @@ export type Web5ContextType = {
     addUserData: () => void;
     deleteUserData: () => void;
     updateUserData: () => void;
-    setPersonData: React.Dispatch<React.SetStateAction<PersonData | undefined>>
-    personData: PersonData | undefined;
+    setPersonData: React.Dispatch<React.SetStateAction<PersonData>>
+    personData: PersonData;
 };
 
 export type Web5ProviderProps = {

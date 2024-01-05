@@ -24,7 +24,7 @@ export const Web5Provider = ({ children }: Web5ProviderProps) => {
     const [web5, setWeb5] = useState<Web5 | null>(null);
     const [did, setDid] = useState<string>("");
     const [persons, setPersons] = useState<Person[]>([]); // Define the type for the persons state
-    const [personData, setPersonData] = useState<PersonData | undefined>(emptyPersonData); // Define the type for the persons state
+    const [personData, setPersonData] = useState<PersonData>(emptyPersonData); // Define the type for the persons state
     const [records, setRecords] = useState<Record[] | undefined>([]);
 
     useEffect(() => {
