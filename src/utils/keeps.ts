@@ -1,4 +1,4 @@
-const randomPersonData = {
+export const randomPersonData = {
     name: "John Doe",
     gender: "Male",
     height: "180 cm",

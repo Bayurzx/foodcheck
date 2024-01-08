@@ -2,6 +2,7 @@
 # mine
 steps.md
 src/delete/
+.env
 
 # dependencies
 /node_modules

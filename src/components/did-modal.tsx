@@ -19,20 +19,20 @@ const DidModal = () => {
     // UseStates Section
     const [modalIsOpen, setModalIsOpen] = useState(false);
 
-    const [foodAllergies, setFoodAllergies] = useState<string[]>(['']); // State to store foodAllergies visited
-    const [foodIntolerances, setFoodIntolerances] = useState<string[]>(['']); // State to store foodIntolerances visited
-    const [medicalConditions, setMedicalConditions] = useState<string[]>(['']); // State to store medicalConditions visited
-    const [prescriptionDrugs, setPrescriptionDrugs] = useState<string[]>(['']); // State to store prescriptionDrugs visited
-    const [overTheCounterMeds, setOverTheCounterMeds] = useState<string[]>(['']); // State to store overTheCounterMeds visited
-    const [dietarySupplements, setDietarySupplements] = useState<string[]>(['']); // State to store dietarySupplements visited
-    const [religiousOrCultural, setReligiousOrCultural] = useState<string[]>(['']); // State to store religiousOrCultural visited
-    const [ethicalPreferences, setEthicalPreferences] = useState<string[]>(['']); // State to store ethicalPreferences visited
-    const [nutrientDeficiencies, setNutrientDeficiencies] = useState<string[]>(['']); // State to store nutrientDeficiencies visited
-    const [nutritionalRiskFactors, setNutritionalRiskFactors] = useState<string[]>(['']); // State to store nutritionalRiskFactors visited
-    const [foodPreferences, setFoodPreferences] = useState<string[]>(['']); // State to store foodPreferences visited
-    const [culturalFoodPractices, setCulturalFoodPractices] = useState<string[]>(['']); // State to store culturalFoodPractices visited
-    const [previousSurgeriesOrHospitalizations, setPreviousSurgeriesOrHospitalizations] = useState<string[]>(['']); // State to store previousSurgeriesOrHospitalizations visited
-    const [familyHistoryOfChronicDiseases, setFamilyHistoryOfChronicDiseases] = useState<string[]>(['']); // State to store familyHistoryOfChronicDiseases visited
+    const [foodAllergies, setFoodAllergies] = useState<string[]>(['']); 
+    const [foodIntolerances, setFoodIntolerances] = useState<string[]>(['']); 
+    const [medicalConditions, setMedicalConditions] = useState<string[]>(['']); 
+    const [prescriptionDrugs, setPrescriptionDrugs] = useState<string[]>(['']); 
+    const [overTheCounterMeds, setOverTheCounterMeds] = useState<string[]>(['']); 
+    const [dietarySupplements, setDietarySupplements] = useState<string[]>(['']); 
+    const [religiousOrCultural, setReligiousOrCultural] = useState<string[]>(['']); 
+    const [ethicalPreferences, setEthicalPreferences] = useState<string[]>(['']); 
+    const [nutrientDeficiencies, setNutrientDeficiencies] = useState<string[]>(['']); 
+    const [nutritionalRiskFactors, setNutritionalRiskFactors] = useState<string[]>(['']); 
+    const [foodPreferences, setFoodPreferences] = useState<string[]>(['']); 
+    const [culturalFoodPractices, setCulturalFoodPractices] = useState<string[]>(['']); 
+    const [previousSurgeriesOrHospitalizations, setPreviousSurgeriesOrHospitalizations] = useState<string[]>(['']); 
+    const [familyHistoryOfChronicDiseases, setFamilyHistoryOfChronicDiseases] = useState<string[]>(['']); 
 
     const [unitH, setUnitH] = useState<'cm' | 'inches'>('cm');
     const [unitW, setUnitW] = useState<'kg' | 'lbs'>('kg');
