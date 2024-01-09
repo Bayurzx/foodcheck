@@ -1,4 +1,4 @@
-# FoodCheck AI
+# FoodCheck AI 🚀
 
 ## Inspiration
 Our inspiration stems from the challenges people face in navigating food choices amid varying health needs and limited awareness of nutritional information. We aim to bridge this gap by leveraging technology to empower individuals with personalized insights into their food and drug choices.
