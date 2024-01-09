@@ -41,7 +41,7 @@ const DidModal = () => {
 
 
     // Import Web5Context Section
-    const { personData, setPersonData } = useContext(Web5Context) ?? {};
+    const { personData, setPersonData, addUserData } = useContext(Web5Context) ?? {};
 
     // Modal Control Section
     const openModal = () => {
@@ -52,12 +52,16 @@ const DidModal = () => {
         setModalIsOpen(false);
     };
 
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
         const confirmed = window.confirm("Do you really want to submit?");
 
         if (confirmed) {
+            if (!addUserData) return;
+            
+            await addUserData();
+
             console.log('Form submitted!', foodAllergies);
             // Continue with your form submission logic here...
 
@@ -881,12 +885,12 @@ const DidModal = () => {
                                 <label htmlFor="name" className="block text-gray-700 font-bold">
                                     Name
                                 </label>
-                                <sup
+                                {/* <sup
                                     className="text-white mt-1 ml-1 cursor-pointer"
                                     title="Your Name"
                                 >
                                     <FaInfoCircle />
-                                </sup>
+                                </sup> */}
                                 <input
                                     type="text"
                                     id="name"

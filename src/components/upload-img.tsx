@@ -1,12 +1,14 @@
 import { useState, ChangeEvent, FormEvent, useRef } from 'react';
 import Image from 'next/image'
-import { randomPersonData } from '@/utils/keeps';
+import { filterNonEmptyKeys, randomPersonData } from '@/utils/keeps';
 
 const NEXT_PUBLIC_FOODCHECK_AI_API = process.env["NEXT_PUBLIC_FOODCHECK_AI_API"] ?? 'http://localhost:3002/upload'
 
 const UploadImg = () => {
     const [imageUrl, setImageUrl] = useState<string>('');
     const [isDrag, setIsDrag] = useState(false);
+    const [isLoading, setIsLoading] = useState(false); 
+
     const fileInputRef = useRef<HTMLInputElement>(null);
     const dropAreaRef = useRef<HTMLDivElement>(null);
 
@@ -14,6 +16,7 @@ const UploadImg = () => {
 
     const handleImgSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+        setIsLoading(true); 
 
         const confirmed = window.confirm("Do you really want to submit?");
 
@@ -27,7 +30,8 @@ const UploadImg = () => {
                 const formData = new FormData();
                 formData.append('image_file', file);
 
-                const objectData = randomPersonData
+                const objectData = filterNonEmptyKeys(randomPersonData)
+                console.log('objectData', objectData)
 
                 formData.append('json_data', JSON.stringify(objectData));
 
@@ -39,7 +43,8 @@ const UploadImg = () => {
 
                     if (response.ok) {
                         console.log('Image uploaded successfully!');
-                        console.log('response', response)
+                        const data = await response.json();
+                        console.log(data); // Log the JSON data returned by the server
                         // Reset the image preview after successful upload
                         setImageUrl('');
 
@@ -49,6 +54,8 @@ const UploadImg = () => {
                     }
                 } catch (error) {
                     console.error('Error uploading image:', error);
+                } finally {
+                    setIsLoading(false); 
                 }
             } else {
                 alert("No file yet!")
@@ -150,8 +157,9 @@ const UploadImg = () => {
                 <button
                     type="submit"
                     className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ml-2 mt-4 float-right"
+                    disabled={isLoading} 
                 >
-                    Submit
+                    {isLoading ? 'Loading...' : 'Submit'}
                 </button>
 
             </form>

@@ -57,7 +57,7 @@ export const Web5Provider = ({ children }: Web5ProviderProps) => {
         };
 
         fetchData();
-    }, [records]);
+    }, []);
 
 
     const addUserData = async () => {
