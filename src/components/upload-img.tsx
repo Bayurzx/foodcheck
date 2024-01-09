@@ -1,6 +1,11 @@
-import { useState, ChangeEvent, FormEvent, useRef } from 'react';
+import { useState, ChangeEvent, FormEvent, useRef, useEffect } from 'react';
 import Image from 'next/image'
+import MarkdownPage from './markdown-page';
+
 import { filterNonEmptyKeys, randomPersonData } from '@/utils/keeps';
+import protocolDefinition from "@/utils/profile.protocol.json"
+import { PersonData } from '@/types';
+import CheckLoading from './check-loading';
 
 const NEXT_PUBLIC_FOODCHECK_AI_API = process.env["NEXT_PUBLIC_FOODCHECK_AI_API"] ?? 'http://localhost:3002/upload'
 
@@ -8,6 +13,9 @@ const UploadImg = () => {
     const [imageUrl, setImageUrl] = useState<string>('');
     const [isDrag, setIsDrag] = useState(false);
     const [isLoading, setIsLoading] = useState(false); 
+    const [dataResponse, setDataResponse] = useState(null)
+
+    const [userData, setUserData] = useState<PersonData | null>(null)
 
     const fileInputRef = useRef<HTMLInputElement>(null);
     const dropAreaRef = useRef<HTMLDivElement>(null);
@@ -30,7 +38,7 @@ const UploadImg = () => {
                 const formData = new FormData();
                 formData.append('image_file', file);
 
-                const objectData = filterNonEmptyKeys(randomPersonData)
+                const objectData = filterNonEmptyKeys(userData)
                 console.log('objectData', objectData)
 
                 formData.append('json_data', JSON.stringify(objectData));
@@ -45,6 +53,7 @@ const UploadImg = () => {
                         console.log('Image uploaded successfully!');
                         const data = await response.json();
                         console.log(data); // Log the JSON data returned by the server
+                        setDataResponse(data.text)
                         // Reset the image preview after successful upload
                         setImageUrl('');
 
@@ -110,9 +119,53 @@ const UploadImg = () => {
 
 
 
+    // UseEffect Section will handle first level elements
+    useEffect(() => {
+        const fetchData = async () => {
+            setIsLoading(true)
+            try {
+                // Populate persons from DWN
+                const { Web5 } = await import('@web5/api/browser');
+                const { web5, did } = await Web5.connect({ sync: '5s' });
+
+                const { records } = await web5.dwn.records.query({
+                    message: {
+                        filter: {
+                            schema: protocolDefinition.types.person.schema,
+                        },
+                    },
+                });
+
+                const userData_ = await (records?.[0]?.data.json())
+                console.log('records2', userData_)
+                setUserData(userData_)
+
+            } catch (error) {
+                console.error('Error with Web5 data:', error);
+            } finally {
+                setIsLoading(false)
+
+            }
+        };
+
+        fetchData();
+
+    }, []);
+
+    if (!userData) {
+        return (
+            <div className="flex justify-center items-center mt-16">Create Your Health DID below</div>
+        )
+    }
+
+
+
 
     return (
         <>
+            { isLoading && <CheckLoading /> }
+            {dataResponse && <MarkdownPage dataResponse={dataResponse} />}
+
             <form action="" onSubmit={handleImgSubmit}>
                 <div className="m-2">
                     <p className="block text-gray-700 font-bold"></p>

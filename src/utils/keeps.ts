@@ -1,3 +1,5 @@
+import { PersonData } from '@/types';
+
 export const randomPersonData = {
     name: "John Doe",
     gender: "Male",
@@ -97,59 +99,59 @@ export const emptyPersonData = {
 
 
 
-type PersonData = {
-    name: string;
-    gender?: string;
-    jobTitle?: string;
-    birthDate?: string;
-    height?: string;
-    weight?: string;
-    image?: string;
-    allergiesAndSensitivities?: {
-        foodAllergies?: string[];
-        foodIntolerances?: string[];
-    };
-    medicalConditions?: string[];
-    medications?: {
-        prescriptionDrugs?: { name: string; dosage: string; frequency: string }[];
-        overTheCounterMeds?: string[];
-        dietarySupplements?: string[];
-    };
-    anthropometricData?: {
-        height?: string;
-        weight?: string;
-        bodyMassIndex?: string;
-    };
-    dietaryRestrictions?: {
-        religiousOrCultural?: string[];
-        ethicalPreferences?: string[];
-    };
-    laboratoryTestResults?: {
-        bloodGlucoseLevels?: string;
-        cholesterolLevels?: string;
-        kidneyFunctionTests?: string;
-        liverFunctionTests?: string;
-    };
-    nutritionalStatus?: {
-        dietaryIntake?: string;
-        nutrientDeficiencies?: string[];
-        nutritionalRiskFactors?: string[];
-    };
-    lifestyleFactors?: {
-        physicalActivityLevels?: string;
-        smokingStatus?: string;
-        alcoholConsumption?: string;
-    };
-    personalPreferences?: {
-        foodPreferences?: string[];
-        cookingSkillsAndResources?: string;
-        culturalFoodPractices?: string[];
-    };
-    pastMedicalHistory?: {
-        previousSurgeriesOrHospitalizations?: string[];
-        familyHistoryOfChronicDiseases?: string[];
-    };
-};
+// type PersonData = {
+//     name: string;
+//     gender?: string;
+//     jobTitle?: string;
+//     birthDate?: string;
+//     height?: string;
+//     weight?: string;
+//     image?: string;
+//     allergiesAndSensitivities?: {
+//         foodAllergies?: string[];
+//         foodIntolerances?: string[];
+//     };
+//     medicalConditions?: string[];
+//     medications?: {
+//         prescriptionDrugs?: { name: string; dosage: string; frequency: string }[];
+//         overTheCounterMeds?: string[];
+//         dietarySupplements?: string[];
+//     };
+//     anthropometricData?: {
+//         height?: string;
+//         weight?: string;
+//         bodyMassIndex?: string;
+//     };
+//     dietaryRestrictions?: {
+//         religiousOrCultural?: string[];
+//         ethicalPreferences?: string[];
+//     };
+//     laboratoryTestResults?: {
+//         bloodGlucoseLevels?: string;
+//         cholesterolLevels?: string;
+//         kidneyFunctionTests?: string;
+//         liverFunctionTests?: string;
+//     };
+//     nutritionalStatus?: {
+//         dietaryIntake?: string;
+//         nutrientDeficiencies?: string[];
+//         nutritionalRiskFactors?: string[];
+//     };
+//     lifestyleFactors?: {
+//         physicalActivityLevels?: string;
+//         smokingStatus?: string;
+//         alcoholConsumption?: string;
+//     };
+//     personalPreferences?: {
+//         foodPreferences?: string[];
+//         cookingSkillsAndResources?: string;
+//         culturalFoodPractices?: string[];
+//     };
+//     pastMedicalHistory?: {
+//         previousSurgeriesOrHospitalizations?: string[];
+//         familyHistoryOfChronicDiseases?: string[];
+//     };
+// };
 
 
 // function filterNonEmptyKeys2(personData) {
@@ -174,8 +176,13 @@ type PersonData = {
 //     return filteredData;
 // }
 
-export function filterNonEmptyKeys(emptyPersonData: PersonData) {
-    return JSON.parse(JSON.stringify(emptyPersonData, (key, value) => {
+export function filterNonEmptyKeys(thePersonData: PersonData | null) {
+    // sanitize personal details
+    if (!thePersonData) return;
+    thePersonData.name = ""
+    thePersonData.image = ""
+
+    return JSON.parse(JSON.stringify(thePersonData, (key, value) => {
         if (value === null || value === "" || (Array.isArray(value) && value.length === 0)) {
             return undefined; // Exclude keys with null, empty strings, or empty arrays
         }

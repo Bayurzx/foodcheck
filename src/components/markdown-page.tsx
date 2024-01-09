@@ -1,8 +1,15 @@
+import { generateMarkdown } from '@/utils/keeps';
 import React from 'react'
 import ReactMarkdown from 'react-markdown';
 
 
-const MarkdownPage = () => {
+interface dataResponseProps {
+    dataResponse: string;
+}
+
+
+const MarkdownPage: React.FC<dataResponseProps> = ({ dataResponse }) => {
+    const value = generateMarkdown(JSON.parse(dataResponse))
 
     const dummyMarkdownContent = `
 ## Warnings
@@ -27,7 +34,7 @@ Limited research on the safety and efficacy of these ingredients, especially in 
 `
     return (
         <div className='prose dark:prose-invert'>
-            <ReactMarkdown>{dummyMarkdownContent}</ReactMarkdown>
+            <ReactMarkdown>{value}</ReactMarkdown>
         </div>
 
     )

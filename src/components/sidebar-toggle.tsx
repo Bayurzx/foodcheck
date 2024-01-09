@@ -2,7 +2,7 @@
 
 import { MouseEventHandler } from 'react';
 import { FaBars, FaTimes } from 'react-icons/fa'; // Import icons from react-icons
-import styles from '@/components/sidebar.module.css'; // Import your CSS module
+import styles from '@/styling/sidebar.module.css'; // Import your CSS module
 
 
 interface SidebarToggleProps {
