@@ -56,13 +56,13 @@ export type PersonData = {
 };
 
 export type Person = {
-    record: Record;
+    record: any;
     data: PersonData;
     id: string;
 };
 
 export type Web5ContextType = {
-    web5: Web5 | null;
+    web5: any | null;
     persons: Person[];
     did: string;
     addUserData: () => void;

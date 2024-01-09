@@ -1,7 +1,7 @@
 'use client';
 
 import { ReactNode, useState, useEffect } from 'react';
-import { Web5, Record } from "@web5/api";
+// import { Web5, Record } from "@web5/api";
 import protocolDefinition from "@/utils/profile.protocol.json"
 import Image from "next/image";
 
@@ -25,7 +25,7 @@ interface NavItemProps {
 
 const Sidebar = () => {
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-    const [myWeb5, setMyWeb5] = useState<Web5 | null>(null);
+    const [myWeb5, setMyWeb5] = useState<any | null>(null);
     const [myDid, setMyDid] = useState<string>("");
     const [userData, setUserData] = useState<PersonData | null>(null)
 
@@ -38,7 +38,7 @@ const Sidebar = () => {
 
         const initWeb5 = async () => {
             // @ts-ignore
-            // const { Web5 } = await import('@web5/api/browser');
+            const { Web5 } = await import('@web5/api/browser');
 
             try {
                 const { web5, did } = await Web5.connect({ sync: '5s' });

@@ -1,10 +1,10 @@
 import React, {useState ,useEffect} from 'react'
-import { Web5, Record } from "@web5/api";
+// import { Web5, Record } from "@web5/api";
 import protocolDefinition from "@/utils/profile.protocol.json"
 
 
 const DwnPage = () => {
-    const [myWeb5, setMyWeb5] = useState<Web5 | null>(null);
+    const [myWeb5, setMyWeb5] = useState<any | null>(null);
     const [myDid, setMyDid] = useState<string>("");
 
     useEffect(() => {
@@ -14,6 +14,8 @@ const DwnPage = () => {
             // const { Web5 } = await import('@web5/api/browser');
 
             try {
+                const { Web5 } = await import('@web5/api/browser');
+
                 const { web5, did } = await Web5.connect({ sync: '5s' });
                 setMyWeb5(web5);
                 setMyDid(did);

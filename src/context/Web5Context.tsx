@@ -1,7 +1,7 @@
 // context/Web5Context.tsx
 
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
-import { Web5, Record } from "@web5/api";
+// import { Web5, Record } from "@web5/api";
 import protocolDefinition from "@/utils/profile.protocol.json"
 import { PersonData, Person, Web5ContextType, Web5ProviderProps } from '@/types'
 import { emptyPersonData } from '@/utils/keeps'
@@ -21,15 +21,17 @@ export const useWeb5 = (): Web5ContextType => {
 
 export const Web5Provider = ({ children }: Web5ProviderProps) => {
 
-    const [web5, setWeb5] = useState<Web5 | null>(null);
+    const [web5, setWeb5] = useState<any | null>(null);
     const [did, setDid] = useState<string>("");
     const [persons, setPersons] = useState<Person[]>([]); // Define the type for the persons state
     const [personData, setPersonData] = useState<PersonData>(emptyPersonData); // Define the type for the persons state
-    const [records, setRecords] = useState<Record[] | undefined>([]);
+    const [records, setRecords] = useState<any[] | undefined>([]);
 
     useEffect(() => {
         const fetchData = async () => {
             try {
+                const { Web5 } = await import('@web5/api/browser');
+
                 const { web5: _web5, did: _did } = await Web5.connect();
                 setWeb5(_web5);
                 setDid(_did);
