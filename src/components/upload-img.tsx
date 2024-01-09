@@ -65,13 +65,21 @@ const UploadImg = () => {
                     console.error('Error uploading image:', error);
                 } finally {
                     setIsLoading(false); 
+                    globalThis.scrollTo(0, 0)
+
                 }
             } else {
                 alert("No file yet!")
+                setIsLoading(false); 
+                globalThis.scrollTo(0, 0)
+
             }
 
         } else {
             console.log('Submission cancelled');
+            setIsLoading(false); 
+            globalThis.scrollTo(0, 0)
+
         }
 
     };
@@ -144,6 +152,7 @@ const UploadImg = () => {
                 console.error('Error with Web5 data:', error);
             } finally {
                 setIsLoading(false)
+                globalThis.scrollTo(0, 0)
 
             }
         };

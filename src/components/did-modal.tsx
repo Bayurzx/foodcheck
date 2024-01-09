@@ -8,6 +8,7 @@ import Image from 'next/image';
 import { PersonData } from '@/types';
 import protocolDefinition from "@/utils/profile.protocol.json"
 import styles from '@/styling/loading.module.css'; // Import your CSS module
+import { useRouter } from "next/navigation";
 
 
 const hrColor = {
@@ -48,6 +49,8 @@ const DidModal = () => {
     // Import Web5Context Section
     const { personData, setPersonData, addUserData } = useContext(Web5Context) ?? {};
 
+    const router = useRouter();
+
     // Modal Control Section
     const openModal = () => {
         setModalIsOpen(true);
@@ -67,8 +70,10 @@ const DidModal = () => {
 
             await addUserData();
 
-            console.log('Form submitted!', userData);
+            console.log('Form submitted!', personData);
             closeModal()
+            router.refresh();
+
             // Continue with your form submission logic here...
 
             // Handle logic to calc BMI only if height and weight
