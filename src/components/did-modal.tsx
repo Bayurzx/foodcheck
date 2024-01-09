@@ -891,7 +891,7 @@ const DidModal = () => {
                     <div className="fixed inset-0 flex items-center justify-center z-50 max-h-200 overflow-auto">
                         <div className="bg-gray-300 p-6 rounded-lg shadow-md text-black">
                             <div className="flex justify-between items-center">
-                                <h2 className="text-gray-700 text-xl font-bold pt-2 mb-4">Modal Title Modal Title Modal Title </h2>
+                                <h2 className="text-gray-700 text-xl font-bold pt-2 mb-4">Add your Health DID </h2>
                                 <button
                                     className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-3 ml-10 rounded-full"
                                     onClick={closeModal}
