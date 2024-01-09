@@ -67,7 +67,8 @@ const DidModal = () => {
 
             await addUserData();
 
-            console.log('Form submitted!', foodAllergies);
+            console.log('Form submitted!', userData);
+            closeModal()
             // Continue with your form submission logic here...
 
             // Handle logic to calc BMI only if height and weight

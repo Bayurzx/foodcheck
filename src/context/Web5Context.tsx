@@ -30,7 +30,7 @@ export const Web5Provider = ({ children }: Web5ProviderProps) => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const { Web5 } = await import('@web5/api/browser');
+                const { Web5 } = await import('@web5/api');
 
                 const { web5: _web5, did: _did } = await Web5.connect();
                 setWeb5(_web5);

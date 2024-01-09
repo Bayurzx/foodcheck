@@ -14,7 +14,7 @@ const DwnPage = () => {
             // const { Web5 } = await import('@web5/api/browser');
 
             try {
-                const { Web5 } = await import('@web5/api/browser');
+                const { Web5 } = await import('@web5/api');
 
                 const { web5, did } = await Web5.connect({ sync: '5s' });
                 setMyWeb5(web5);
