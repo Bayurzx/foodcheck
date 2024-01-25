@@ -21,42 +21,51 @@ Throughout the development process, we gained insights into the critical importa
 ## What's next for Foodcheck AI
 Looking ahead, we aim to expand our platform's capabilities further. This includes refining our AI algorithms, enhancing user engagement features, and exploring integrations with additional health-related technologies. Our goal is to continuously evolve and provide even more personalized, impactful guidance to our users.
 
+--- 
 
 
+# FoodCheck AI Web Application Guide
 
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+Welcome to the FoodCheck AI web application at [https://foodcheck-ai.vercel.app/](https://foodcheck-ai.vercel.app/)! Below is a step-by-step guide on how to effectively use the application and make the most out of its features.
 
 ## Getting Started
 
-First, run the development server:
+1. **Decentralized Identity (DID) Creation:**
+   - This app utilizes web5 technology to create a Decentralized Identity (DID).
+   - To get started, click on "Create DID" to add your unique identifier.
+   - Your DID is essential for secure interactions within the decentralized ecosystem.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+2. **Adding Data:**
+   - There's a plethora of data fields available, but worry not – you don't have to fill them all. Add as much as you'd like to test the functionality.
+   - For fields requiring multiple entries, remember to click on the plus button to add additional information.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+3. **Submitting Data:**
+   - Once you've added the desired information, submit the form.
+   - Your DID and associated data are securely stored, marking the completion of the initial setup.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+4. **Image Upload:**
+   - Now that your identity is established, you can start uploading images for analysis.
+   - Choose between dragging and dropping images or using the upload button for convenience.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+5. **Image Processing:**
+   - After uploading, the application will process the image, extracting valuable information.
 
-## Learn More
+## Important Notes
 
-To learn more about Next.js, take a look at the following resources:
+- **Containerized Backend:**
+  - The backend operates as a container to optimize costs. Note that pods may be scaled down when not in use and every 12 hours.
+  - For immediate assistance or to discuss backend availability, please reach out to [bayurzx@gmail.com](mailto:bayurzx@gmail.com).
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **Work in Progress:**
+  - This application is an ongoing project, and updates are continuously implemented.
+  - Your patience is appreciated, and any feedback is welcomed for further improvements.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Thank you for using FoodCheck AI! If you have any questions or need assistance, feel free to contact us.
 
-## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Resources
+- [Web5](https://developer.tbd.website/docs/)
+- [Troubleshooting Web5](https://developer.tbd.website/docs/web5/troubleshooting/common-errors/)
+- [Vision AI (GCP)](https://cloud.google.com/vision)
+- [OpenAI's Docs](https://platform.openai.com/docs/guides/text-generation)
+- [NextJS Docs](https://nextjs.org/docs/pages/building-your-application)
